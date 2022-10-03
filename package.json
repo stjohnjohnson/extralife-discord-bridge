@@ -1,0 +1,32 @@
+{
+  "name": "extralife-discord-bridge",
+  "version": "1.0.0",
+  "description": "Post Extra-Life donations to your Discord channels",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stjohnjohnson/extralife-discord-bridge.git"
+  },
+  "author": "St. John Johnson <st.john.johnson@gmail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/stjohnjohnson/extralife-discord-bridge/issues"
+  },
+  "homepage": "https://github.com/stjohnjohnson/extralife-discord-bridge#readme",
+  "dependencies": {
+    "@discordjs/rest": "^1.2.0",
+    "discord-api-types": "^0.37.11",
+    "discord.js": "^14.5.0",
+    "dotenv": "^16.0.3",
+    "extra-life-api": "^7.1.0",
+    "log-timestamp": "^0.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.24.0"
+  }
+}
