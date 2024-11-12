@@ -1,6 +1,6 @@
 {
   "name": "extralife-discord-bridge",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Post Extra-Life donations to your Discord channels",
   "main": "app.js",
   "type": "module",
@@ -19,11 +19,11 @@
   },
   "homepage": "https://github.com/stjohnjohnson/extralife-discord-bridge#readme",
   "dependencies": {
-    "@discordjs/rest": "^1.2.0",
+    "@discordjs/rest": "^2.4.0",
     "discord-api-types": "^0.37.11",
     "discord.js": "^14.5.0",
     "dotenv": "^16.0.3",
-    "extra-life-api": "^7.1.0",
+    "extra-life-api": "^8.0.0",
     "log-timestamp": "^0.3.0"
   }
 }
