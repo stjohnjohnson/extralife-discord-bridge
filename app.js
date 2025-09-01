@@ -22,15 +22,15 @@ if (configErrors != "") {
     process.exit(1);
 }
 
-var donationChannel, summaryChannel;
+let donationChannel, summaryChannel;
 
 // Track all "seen" donations
-var seenDonationIDs = {};
+const seenDonationIDs = {};
 function getLatestDonation(silent = false) {
     getUserDonations(process.env.EXTRALIFE_PARTICIPANT_ID).then(data => {
-        var msgQueue = [];
+        const msgQueue = [];
 
-        data.donations.map(donation => {
+        data.donations.forEach(donation => {
             if (seenDonationIDs[donation.donationID]) {
                 return;
             }
@@ -38,7 +38,7 @@ function getLatestDonation(silent = false) {
 
             const amount = moneyFormatter.format(donation.amount),
                 displayName = donation.displayName ? donation.displayName : 'Anonymous',
-                message = donation.message ? ` with the message "${donation.message}"` : '';;
+                message = donation.message ? ` with the message "${donation.message}"` : '';
 
             msgQueue.unshift(`${displayName} just donated ${amount}${message}!`);
             console.log(`Donation: ${displayName} / ${amount}${message}`);
@@ -50,14 +50,18 @@ function getLatestDonation(silent = false) {
             }
 
             // Update summary
-            getUserInfo(process.env.EXTRALIFE_PARTICIPANT_ID).then(data => {
-                const sumDonations = moneyFormatter.format(data.sumDonations),
-                    percentComplete = Math.round(data.sumDonations / data.fundraisingGoal * 100),
-                    summary = `${sumDonations} (${percentComplete}%) Raised`;
+            getUserInfo(process.env.EXTRALIFE_PARTICIPANT_ID)
+                .then(data => {
+                    const sumDonations = moneyFormatter.format(data.sumDonations),
+                        percentComplete = Math.round(data.sumDonations / data.fundraisingGoal * 100),
+                        summary = `${sumDonations} (${percentComplete}%) Raised`;
 
-                console.log(`Updating status: "${summary}"`)
-                return summaryChannel.setName(summary);
-            });
+                    console.log(`Updating status: "${summary}"`)
+                    return summaryChannel.setName(summary);
+                })
+                .catch(err => {
+                    console.error("Error getting User Info:", err);
+                });
         }
     }).catch(err => {
         console.error("Error getting Donations:", err);
