@@ -1,6 +1,6 @@
 {
   "name": "extralife-discord-bridge",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Post Extra-Life donations to your Discord channels",
   "main": "app.js",
   "type": "module",
