@@ -1,4 +1,4 @@
-import { getUserInfo, getUserDonations } from 'extra-life-api';
+import { getUserInfo, getUserDonations } from './extralife.js';
 import dotenv from 'dotenv';
 import { Client, GatewayIntentBits } from 'discord.js';
 import 'log-timestamp';

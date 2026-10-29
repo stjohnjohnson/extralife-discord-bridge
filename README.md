@@ -31,9 +31,19 @@ The Discord bot requires `Send Messages` and `Manage Channel` permissions.
 
 Every 30s the bot checks ExtraLife to see if there are any donations for that participant.
 
+The bot calls `https://dd.extra-life.org/api/participants/` directly using
+DonorDrive API version `1.4`. Each request times out after 10 seconds; failures
+are logged and the bot checks again on its next scheduled poll. No additional
+configuration is required.
+
 ### Donation Stream
 
 If there are new donations, it posts them in the channel you specified.
+
+Each poll reads the latest 100 donations. Donations present at startup are
+recorded silently, and each new donation is announced once while the bot runs.
+Donation history is kept in memory, so the bot does not catch up on donations
+received while it was stopped.
 
 ### Summary Channel
 
